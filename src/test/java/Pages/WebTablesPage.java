@@ -46,6 +46,7 @@ public class WebTablesPage extends BasePage{
 
     @FindBy(xpath = "//span[@title='Delete']")
     private List<WebElement> deleteButtonList;
+
     public void clickAddButton(WebTableObject webTableObject){
         webTableObject.setTableSize(tableRowsList.size());
         elementMethods.clickElement(addNewRecordButtonElement);
@@ -73,33 +74,34 @@ public class WebTablesPage extends BasePage{
         LoggerUtility.infoTest("The user validates the expected row count for table with the value:"+tableRowsList.size() );
     }
     public void validateTableContent(WebTableObject webTableObject){
-        String rowContent = tableRowsList.get(webTableObject.getTableSize()).getText();
+        String rowContent=tableRowsList.get(webTableObject.getTableSize()).getText();
         Assert.assertTrue(rowContent.contains(webTableObject.getFirstName()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getFirstName() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getFirstName()+" value");
         Assert.assertTrue(rowContent.contains(webTableObject.getLastName()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getLastName() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getLastName()+" value");
         Assert.assertTrue(rowContent.contains(webTableObject.getAge()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getAge() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getAge()+" value");
         Assert.assertTrue(rowContent.contains(webTableObject.getEmail()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getEmail() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getEmail()+" value");
         Assert.assertTrue(rowContent.contains(webTableObject.getSalary()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getSalary() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getSalary()+" value");
         Assert.assertTrue(rowContent.contains(webTableObject.getDepartment()));
-        LoggerUtility.infoTest("The user validates the presence of " + webTableObject.getDepartment() +" value");
+        LoggerUtility.infoTest("The user validates the presence of "+webTableObject.getDepartment()+" value");
     }
-    public void modifyEntry(WebTableObject webTableObject){
-    editButtonList.get(webTableObject.getTableSize()).click();
-    LoggerUtility.infoTest("The user clicks edit Button");
-    elementMethods.clearElement(addFirstNameElement);
-    elementMethods.fillElement(addFirstNameElement,webTableObject.getFirstName());
-    LoggerUtility.infoTest("The user adds new first name");
-    elementMethods.clickElement(submitButtonElement);
-    LoggerUtility.infoTest("The user clicks on submit after field has been modified");
+
+    public void modifyNewEntry(WebTableObject webTableObject){
+        editButtonList.get(webTableObject.getTableSize()).click();
+        LoggerUtility.infoTest("The user clicks to modify text");
+        elementMethods.clearElement(addFirstNameElement);
+        elementMethods.fillElement(addFirstNameElement, webTableObject.getFirstName());
+        LoggerUtility.infoTest("The user modifies the first name");
+        elementMethods.clickElement(submitButtonElement);
+        LoggerUtility.infoTest("The user clicks on submit after the field has been modified");
     }
+
     public void deleteNewEntry(WebTableObject webTableObject){
         deleteButtonList.get(webTableObject.getTableSize()).click();
-        //webTableObject.setTableSize(tableRowsList.size());
-        LoggerUtility.infoTest("The user clicks delete Button");
+        LoggerUtility.infoTest("The user deletes the last entry");
     }
     public void validateTableAfterDelete(WebTableObject webTableObject){
         Assert.assertEquals(webTableObject.getTableSize(),tableRowsList.size());

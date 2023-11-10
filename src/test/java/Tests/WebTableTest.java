@@ -37,15 +37,17 @@ public class WebTableTest extends Hooks {
         webTablesPage.validateTableContent(webTableObject);
         ExtentUtility.attachTestLog("pass","I validate table content");
 
-
         webTableObject.setFirstName("Alex");
-        webTablesPage.modifyEntry(webTableObject);
-        ExtentUtility.attachTestLog("pass","I validate modified first name");
+
+        webTablesPage.modifyNewEntry(webTableObject);
+        ExtentUtility.attachTestLog("pass","I validate the first name has been changed");
+        webTablesPage.validateTableContent(webTableObject);
+        ExtentUtility.attachTestLog("pass","I validate table content");
 
         webTablesPage.deleteNewEntry(webTableObject);
         ExtentUtility.attachTestLog("pass","I validate the entry has been deleted");
         webTablesPage.validateTableAfterDelete(webTableObject);
-        ExtentUtility.attachTestLog("pass","I validate the list is updated");
+        ExtentUtility.attachTestLog("pass","I validate the table size");
     }
 
 }

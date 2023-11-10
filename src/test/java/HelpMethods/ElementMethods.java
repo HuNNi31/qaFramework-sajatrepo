@@ -58,6 +58,7 @@ public class ElementMethods {
         Select countryDropdown=new Select(element);
         countryDropdown.selectByValue(text);
     }
+
     public void clearElement(WebElement element){
         waitVisibleElement(element);
         element.clear();
