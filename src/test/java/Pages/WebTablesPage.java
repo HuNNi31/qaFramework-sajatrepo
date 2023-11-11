@@ -105,6 +105,8 @@ public class WebTablesPage extends BasePage{
     }
     public void validateTableAfterDelete(WebTableObject webTableObject){
         Assert.assertEquals(webTableObject.getTableSize(),tableRowsList.size());
+
+        
     }
 
 }
