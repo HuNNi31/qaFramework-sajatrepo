@@ -25,11 +25,14 @@ public class WebTableTest extends Hooks {
 
         WebTablesPage webTablesPage=new WebTablesPage(getDriver());
 
-        webTablesPage.clickAddButton(webTableObject);
-        ExtentUtility.attachTestLog("pass","I make a click on add button");
+//        webTablesPage.clickAddButton(webTableObject);
+//        ExtentUtility.attachTestLog("pass","I make a click on add button");
 
-        webTablesPage.fillRegisterForm(webTableObject);
-        ExtentUtility.attachTestLog("pass","I fill in the register form");
+//        webTablesPage.fillRegisterForm(webTableObject);
+//        ExtentUtility.attachTestLog("pass","I fill in the register form");
+
+        webTablesPage.fillRegisterForms(webTableObject,8);
+        ExtentUtility.attachTestLog("pass","I fill in the register forms");
 
         webTablesPage.validateTableSize(webTableObject);
         ExtentUtility.attachTestLog("pass","I validate table size");

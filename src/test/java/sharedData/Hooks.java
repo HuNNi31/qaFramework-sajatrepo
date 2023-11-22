@@ -17,7 +17,7 @@ public class Hooks extends SharedData {
     public void prepareEnvironment(){
         initiateDriver();
         String testName = this.getClass().getSimpleName();
-        propertyUtility = new PropertyUtility(testName);
+        propertyUtility = new PropertyUtility(testName); //aici schimbi fisierul
         LoggerUtility.startTestCase(testName);
         ExtentUtility.createTest(testName);
     }

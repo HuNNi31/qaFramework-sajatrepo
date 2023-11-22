@@ -69,6 +69,20 @@ public class WebTablesPage extends BasePage{
         LoggerUtility.infoTest("The user clicks on the submit button");
     }
 
+    public void fillRegisterForms(WebTableObject webTableObject, int n){
+        for (int i =0; i<n; ++i){
+            webTableObject.setTableSize(tableRowsList.size());
+            elementMethods.clickElement(addNewRecordButtonElement);
+            elementMethods.fillElement(addFirstNameElement, webTableObject.getFirstName()+i);
+            elementMethods.fillElement(addLastNameElement, webTableObject.getLastName());
+            elementMethods.fillElement(addUserEmailElement, webTableObject.getEmail());
+            elementMethods.fillElement(addAgeElement, webTableObject.getAge());
+            elementMethods.fillElement(addSalaryElement, webTableObject.getSalary());
+            elementMethods.fillElement(addDepartmentElement, webTableObject.getDepartment());
+            elementMethods.clickElement(submitButtonElement);
+        }
+    }
+
     public void validateTableSize(WebTableObject webTableObject){
         Assert.assertEquals(webTableObject.getTableSize()+1,tableRowsList.size());
         LoggerUtility.infoTest("The user validates the expected row count for table with the value:"+tableRowsList.size() );

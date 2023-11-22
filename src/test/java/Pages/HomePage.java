@@ -11,9 +11,15 @@ public class HomePage extends BasePage{
     }
     @FindBy(xpath = "//h5[text()='Elements']")
     private WebElement elementsField;
-
+    @FindBy(xpath = "//h5[text()='Forms']")
+    private WebElement formsField;
     public void clickElementsPage(){
         elementMethods.clickElement(elementsField);
         LoggerUtility.infoTest("The user clicks on elementsField");
+    }
+
+    public void clickFormsPage(){
+        elementMethods.clickElement(formsField);
+        LoggerUtility.infoTest("The user clicks on formsField");
     }
 }
