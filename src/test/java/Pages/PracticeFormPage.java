@@ -152,6 +152,8 @@ public class PracticeFormPage extends BasePage{
 
    public void finnishTest(){
         submit.submit();
+
+
    }
    public void validateTableContent(PracticeFormObject practiceFormObject){
         elementMethods.waitVisibleElement(table);
