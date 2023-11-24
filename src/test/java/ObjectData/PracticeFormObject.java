@@ -19,7 +19,15 @@ public class PracticeFormObject extends CommonObject{
 
     private String day;
 
+    private String subjects;
+
     private List<String> hobbies;
+    private String address;
+
+    private String city;
+
+    private String state;
+
 
     public PracticeFormObject(HashMap<String,String> testData) {
         populateData(testData);
@@ -54,6 +62,18 @@ public class PracticeFormObject extends CommonObject{
                     break;
                 case "hobbies":
                     setHobbies(getValueAsList(testData.get(key)));
+                    break;
+                case "subjects":
+                    setSubjects(testData.get(key));
+                    break;
+                case "address":
+                    setAddress(testData.get(key));
+                    break;
+                case "state":
+                    setState(testData.get(key));
+                    break;
+                case "city":
+                    setCity(testData.get(key));
                     break;
 
 
@@ -131,5 +151,37 @@ public class PracticeFormObject extends CommonObject{
 
     public void setHobbies(List<String> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public String getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

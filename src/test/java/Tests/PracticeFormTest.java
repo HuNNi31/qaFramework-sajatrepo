@@ -32,6 +32,19 @@ public class PracticeFormTest extends Hooks {
 
         practiceFormPage.completeHobbies(practiceFormObject);
         ExtentUtility.attachTestLog("pass","I select my hobbies");
+
+        practiceFormPage.completeSubjects(practiceFormObject);
+        ExtentUtility.attachTestLog("pass","I select my subjects");
+        practiceFormPage.uploadImage();
+        ExtentUtility.attachTestLog("pass","I upload an image");
+        practiceFormPage.completeAddress(practiceFormObject);
+        ExtentUtility.attachTestLog("pass","I complete my address");
+        practiceFormPage.completeStateCity(practiceFormObject);
+        ExtentUtility.attachTestLog("pass","I complete my state and city");
+        //practiceFormPage.submitForm();
+        practiceFormPage.finnishTest();
+        ExtentUtility.attachTestLog("pass","I submit my form");
+        practiceFormPage.validateTableContent(practiceFormObject);
     }
 
 }

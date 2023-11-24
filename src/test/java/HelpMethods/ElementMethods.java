@@ -1,5 +1,6 @@
 package HelpMethods;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -62,5 +63,17 @@ public class ElementMethods {
     public void clearElement(WebElement element){
         waitVisibleElement(element);
         element.clear();
+    }
+    public void fillUsingActions(WebElement element, String text){
+        Actions actions = new Actions(driver);
+        actions.click(element).build().perform();
+        actions.sendKeys(text).build().perform();
+        waitVisibleElement(element);
+        actions.sendKeys(Keys.ENTER).perform();
+    }
+
+    public void pressEnter(){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ENTER).perform();
     }
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class PracticeFormPage extends BasePage{
     public PracticeFormPage(WebDriver driver) {
@@ -47,6 +48,25 @@ public class PracticeFormPage extends BasePage{
 
     @FindBy(xpath="//label[@for='hobbies-checkbox-3']")
     private WebElement musicHobby;
+
+    @FindBy(xpath="//div[@id='subjectsContainer']")
+    private WebElement subjects;
+
+    @FindBy(xpath = "//input[@id='uploadPicture']")
+    private WebElement imageElement;
+
+    @FindBy(id="currentAddress")
+    private WebElement fieldAddress;
+
+    @FindBy(id="state")
+    private WebElement state;
+
+    @FindBy(id="city")
+    private WebElement city;
+    @FindBy(id="submit")
+    private WebElement submit;
+    @FindBy(className = "modal-body")
+    private WebElement table;
 
 
     public void completeFirstRegion (PracticeFormObject practiceFormObject){
@@ -102,7 +122,57 @@ public class PracticeFormPage extends BasePage{
             }
 
         }
+        LoggerUtility.infoTest("The user completed hobbies with"+practiceFormObject.getHobbies());
 
     }
 
+    public void completeSubjects(PracticeFormObject practiceFormObject){
+        elementMethods.fillUsingActions(subjects,practiceFormObject.getSubjects());
+        LoggerUtility.infoTest("The user completed Subject with"+practiceFormObject.getSubjects());
+    }
+
+    public void uploadImage(){
+        String path ="src/test/resources/IMG_0680.PNG";
+        imageElement.sendKeys(path);
+    }
+
+    public void completeAddress(PracticeFormObject practiceFormObject){
+        elementMethods.fillElement(fieldAddress,practiceFormObject.getAddress());
+    }
+
+    public void completeStateCity(PracticeFormObject practiceFormObject){
+        elementMethods.fillUsingActions(state,practiceFormObject.getState());
+        elementMethods.waitVisibleElement(city);
+        elementMethods.fillUsingActions(city,practiceFormObject.getCity());
+    }
+
+   public void submitForm(){
+        elementMethods.pressEnter();
+   }
+
+   public void finnishTest(){
+        submit.submit();
+   }
+   public void validateTableContent(PracticeFormObject practiceFormObject){
+        elementMethods.waitVisibleElement(table);
+        String textTable=table.getText();
+
+       String fullName = practiceFormObject.getFirstName() + " " +practiceFormObject.getLastName();
+       String DOB = practiceFormObject.getDay() +" "+practiceFormObject.getMonth()+","+practiceFormObject.getYear();
+       Assert.assertTrue(textTable.contains(fullName));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getUserEmail()));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getGender()));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getUserNumber()));
+       Assert.assertTrue(textTable.contains(DOB));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getSubjects()));
+       for(String hobbies:practiceFormObject.getHobbies()) {
+           Assert.assertTrue(textTable.contains(hobbies));
+       }
+       Assert.assertTrue(textTable.contains(practiceFormObject.getAddress()));
+       Assert.assertTrue(textTable.contains(imageElement.getText()));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getState()));
+       Assert.assertTrue(textTable.contains(practiceFormObject.getCity()));
+
+
+   }
 }
