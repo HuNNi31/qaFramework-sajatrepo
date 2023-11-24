@@ -29,4 +29,17 @@ jobs:
     - name: RunTests
       run: mvn clean install -Dci_cd=true
 
+    - name: PublishRegressionLogs
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: evidence
+        path: target/logs/output.log
+
+    - name: PublishRegressionReport
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: evidence
+        path: target/report/ExtentReport.html
 
