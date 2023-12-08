@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <driverConfig>
+        <localDriver>edge</localDriver>
+        <url>https://demoqa.com/</url>
+        <headless></headless>
+        <gpu>--disable-gpu</gpu>
+        <resolution>window-size=1920,1080</resolution>
+        <sandbox>--no-sandbox</sandbox>
+    </driverConfig>
+</configuration>

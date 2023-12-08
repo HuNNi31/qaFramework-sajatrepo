@@ -6,6 +6,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import lombok.SneakyThrows;
+import lombok.Synchronized;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.OutputType;
@@ -25,7 +27,8 @@ public class ExtentUtility {
     private static String PathProject= System.getProperty("user.dir")+"/target/report/";
     private static ConcurrentHashMap<String , ExtentTest> context=new ConcurrentHashMap<>();
 
-    public static synchronized void initializeReport(){
+    @Synchronized
+    public static void initializeReport(){
         createFolder();
         ExtentSparkReporter htmlReporter = new ExtentSparkReporter(PathProject+"ExtentReport.html");
         htmlReporter.config().setTheme(Theme.DARK);
@@ -61,17 +64,20 @@ public class ExtentUtility {
                 .fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(driver,reportName))
                         .build());
     }
-
-    private static synchronized String getScreenShot(WebDriver driver,String reportname){
+@SneakyThrows(IOException.class)
+@Synchronized
+    private static String getScreenShot(WebDriver driver,String reportname){
         String path=PathProject+reportname+".png";
         File src=((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         byte[] imageByte=null;
-        try {
-            FileUtils.copyFile(src,new File(path));
-            imageByte= IOUtils.toByteArray(Files.newInputStream(Paths.get(path)));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+    FileUtils.copyFile(src,new File(path));
+    imageByte= IOUtils.toByteArray(Files.newInputStream(Paths.get(path)));
+//        try {
+//            FileUtils.copyFile(src,new File(path));
+//            imageByte= IOUtils.toByteArray(Files.newInputStream(Paths.get(path)));
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
         return Base64.getEncoder().encodeToString(imageByte);
     }
 

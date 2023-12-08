@@ -1,7 +1,8 @@
-package Pages;
+package Pages.Elements;
 
 import Logger.LoggerUtility;
 import ObjectData.WebTableObject;
+import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class WebTablesPage extends BasePage{
+public class WebTablesPage extends BasePage {
 
     public WebTablesPage(WebDriver driver) {
         super(driver);

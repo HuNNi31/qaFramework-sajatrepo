@@ -1,10 +1,9 @@
 package Tests;
 
 import ObjectData.PracticeFormObject;
-import ObjectData.WebTableObject;
-import Pages.FormsPage;
+import Pages.Forms.FormsPage;
 import Pages.HomePage;
-import Pages.PracticeFormPage;
+import Pages.Forms.PracticeFormPage;
 import ReportUtility.ExtentUtility;
 import org.testng.annotations.Test;
 import sharedData.Hooks;

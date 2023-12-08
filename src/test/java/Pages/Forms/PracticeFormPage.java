@@ -1,15 +1,16 @@
-package Pages;
+package Pages.Forms;
 
 import HelpMethods.ElementMethods;
 import Logger.LoggerUtility;
 import ObjectData.PracticeFormObject;
+import Pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class PracticeFormPage extends BasePage{
+public class PracticeFormPage extends BasePage {
     public PracticeFormPage(WebDriver driver) {
         super(driver);
     }
@@ -132,7 +133,7 @@ public class PracticeFormPage extends BasePage{
     }
 
     public void uploadImage(){
-        String path ="src/test/resources/IMG_0680.PNG";
+        String path ="C:\\Users\\hcsegzi\\IdeaProjects\\qaFramework-master\\src\\test\\resources\\IMG_0680.PNG";
         imageElement.sendKeys(path);
     }
 

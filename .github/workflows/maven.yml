@@ -11,6 +11,12 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Choose browser: chrome, edge'
+        required: true
+        default: 'chrome'
 
 
 jobs:
@@ -27,7 +33,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: RunTests
-      run: mvn clean install -Dci_cd=true
+      run: mvn clean install -Dci_cd=true -Dbrowser='${{ github.event.inputs.browser }}'
 
     - name: PublishRegressionLogs
       if: always()

@@ -1,11 +1,10 @@
 package Tests;
 
 import ObjectData.WebTableObject;
-import Pages.ElementsPage;
+import Pages.Elements.ElementsPage;
 import Pages.HomePage;
-import Pages.WebTablesPage;
+import Pages.Elements.WebTablesPage;
 import ReportUtility.ExtentUtility;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import sharedData.Hooks;
 

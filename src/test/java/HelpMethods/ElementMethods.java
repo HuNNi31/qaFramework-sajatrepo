@@ -1,5 +1,8 @@
 package HelpMethods;
 
+import ObjectData.SliderObject;
+import lombok.AllArgsConstructor;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-
+@AllArgsConstructor
 public class ElementMethods {
     private WebDriver driver;
 
-    public ElementMethods(WebDriver driver) {
-        this.driver = driver;
-    }
+//LOMBOK IS HERE   // public ElementMethods(WebDriver driver) {
+//        this.driver = driver;
+//    }
 
     public void moveToElement(WebElement element) {
         Actions action = new Actions(driver);//clasa actions te ajuta sa faci actiuniile din mouse
@@ -75,5 +78,28 @@ public class ElementMethods {
     public void pressEnter(){
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.ENTER).perform();
+    }
+    public void scrollToElement(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public void moveSlider(WebElement element, String targetValue){
+        Actions actions = new Actions(driver);
+        // Get the slider width
+        int sliderWidth = element.getSize().getWidth();
+
+        // Calculate the desired slider position based on the target value
+
+        int xOffset = Integer.parseInt(targetValue);
+        //int xOffset = (int) ((Integer.parseInt(targetValue)/ 100.0) * sliderWidth);
+        //int xOffset = (int) ((Integer.parseInt(targetValue) / 100.0) * sliderWidth);
+        //sageata stg/drpt
+        // Perform click-and-hold, move, and release actions to set the slider position
+        actions.clickAndHold(element)
+                .moveByOffset(xOffset, 0)
+                .release()
+                .build()
+                .perform();
     }
 }
