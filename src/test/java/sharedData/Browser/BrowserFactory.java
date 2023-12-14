@@ -5,6 +5,7 @@ import configXML.GeneralConfig;
 import org.openqa.selenium.WebDriver;
 import sharedData.Browser.Service.ChromeBrowserService;
 import sharedData.Browser.Service.EdgeBrowserService;
+import sharedData.Browser.Service.FirefoxBrowserService;
 
 public class BrowserFactory {
 
@@ -31,6 +32,10 @@ public class BrowserFactory {
                 EdgeBrowserService edgeBrowserService = new EdgeBrowserService();
                 edgeBrowserService.openBrowser(configuration.driverConfig);
                 return edgeBrowserService.getDriver();
+            case BrowserType.BROWSER_FIREFOX:
+                FirefoxBrowserService firefoxBrowserService = new FirefoxBrowserService();
+                firefoxBrowserService.openBrowser(configuration.driverConfig);
+                return firefoxBrowserService.getDriver();
         }
 
         return null;

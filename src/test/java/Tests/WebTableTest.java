@@ -11,7 +11,7 @@ import sharedData.Hooks;
 public class WebTableTest extends Hooks {
 
     @Test
-    public void metodaLoginTest(){
+    public void WebTableTest(){
         WebTableObject webTableObject=new WebTableObject(propertyUtility.getAllData());
 
         HomePage homePage=new HomePage(getDriver());

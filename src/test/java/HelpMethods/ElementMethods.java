@@ -36,6 +36,8 @@ public class ElementMethods {
         element.click();
     }
 
+
+
     public void waitForce(Integer timeValue){
         try {
             Thread.sleep(timeValue);

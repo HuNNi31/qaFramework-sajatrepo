@@ -25,6 +25,7 @@ public class HomePage extends BasePage{
         LoggerUtility.infoTest("The user clicks on formsField");
     }
     public void clickWidgetsPage(){
+        elementMethods.scrollToElement(widgetsField);
         elementMethods.clickElement(widgetsField);
         LoggerUtility.infoTest("The user clicks on widgetField");
     }
