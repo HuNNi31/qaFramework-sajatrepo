@@ -30,4 +30,11 @@ public class WidgetSliderPage extends BasePage {
         LoggerUtility.infoTest("The user set slider to "+sliderObject.getSliders() +"in order");
     }
 
+    public void moveSliderWithButton(SliderObject sliderObject){
+        elementMethods.moveSliderWithButtonsRight(slider,Integer. parseInt(sliderObject.getSlider()));
+        LoggerUtility.infoTest("The value of slider is "+sliderValue.getAttribute("value"));
+        elementMethods.moveSliderWithButtonsLeft(slider,15);
+        LoggerUtility.infoTest("The value of slider is "+sliderValue.getAttribute("value"));
+    }
+
 }

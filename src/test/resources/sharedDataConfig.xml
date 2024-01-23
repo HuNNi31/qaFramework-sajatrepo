@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
     <driverConfig>
-        <localDriver>firefox</localDriver>
+        <localDriver>chrome</localDriver>
         <url>https://demoqa.com/</url>
         <headless></headless>
         <gpu>--disable-gpu</gpu>

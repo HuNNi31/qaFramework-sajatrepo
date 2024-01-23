@@ -19,12 +19,15 @@ public class SliderTest extends Hooks{
         ExtentUtility.attachTestLog("pass","I make a click on Slider Page");
 
         WidgetSliderPage widgetSliderPage = new WidgetSliderPage(getDriver());
-        widgetSliderPage.moveSlider(sliderObject);
+       // widgetSliderPage.moveSlider(sliderObject);
         ExtentUtility.attachTestLog("pass","I set slider to 62");
         //widgetSliderPage.moveSlider(sliderObject);
 
-        widgetSliderPage.movesSlider(sliderObject);
+        //widgetSliderPage.movesSlider(sliderObject);
         ExtentUtility.attachTestLog("pass","I set slider multiple times");
+
+        widgetSliderPage.moveSliderWithButton(sliderObject);
+        ExtentUtility.attachTestLog("pass","I move slider with Buttons");
     }
 
 }

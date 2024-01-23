@@ -15,6 +15,10 @@ public class HomePage extends BasePage{
     private WebElement formsField;
     @FindBy(xpath = "//h5[text()='Widgets']")
     private WebElement widgetsField;
+
+    @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']")
+    private WebElement alertsField;
+
     public void clickElementsPage(){
         elementMethods.clickElement(elementsField);
         LoggerUtility.infoTest("The user clicks on elementsField");
@@ -28,5 +32,9 @@ public class HomePage extends BasePage{
         elementMethods.scrollToElement(widgetsField);
         elementMethods.clickElement(widgetsField);
         LoggerUtility.infoTest("The user clicks on widgetField");
+    }
+    public void clickAlertsPage(){
+        elementMethods.scrollToElement(alertsField);
+        elementMethods.clickElement(alertsField);
     }
 }

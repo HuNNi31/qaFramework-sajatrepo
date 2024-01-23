@@ -11,9 +11,17 @@ public class WidgetsPage extends BasePage {
     }
     @FindBy(xpath="//span[text()='Slider']")
     private WebElement sliderPage;
+    @FindBy(xpath = "//span[text()='Progress Bar']")
+    private WebElement progressBarPage;
+
     public void clickSliderPage(){
         elementMethods.scrollToElement(sliderPage);
         elementMethods.clickElement(sliderPage);
+        LoggerUtility.infoTest("The user clicks on Slider page inside Widgets");
+    }
+    public void clickProgressBarPage(){
+        elementMethods.scrollToElement(progressBarPage);
+        elementMethods.clickElement(progressBarPage);
         LoggerUtility.infoTest("The user clicks on Slider page inside Widgets");
     }
 }

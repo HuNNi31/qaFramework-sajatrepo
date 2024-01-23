@@ -104,4 +104,22 @@ public class ElementMethods {
                 .build()
                 .perform();
     }
+    public void moveSliderWithButtonsRight(WebElement element, Integer nrOfSteps){
+
+        Actions action = new Actions(driver);
+        action.clickAndHold(element).release().build().perform();
+
+        for (int i=0; i<nrOfSteps;++i) {
+            action.sendKeys(Keys.ARROW_RIGHT).release().build().perform();;
+        }
+    }
+    public void moveSliderWithButtonsLeft(WebElement element, Integer nrOfSteps){
+
+        Actions action = new Actions(driver);
+        action.clickAndHold(element).release().build().perform();
+
+        for (int i=0; i<nrOfSteps;++i) {
+            action.sendKeys(Keys.ARROW_LEFT).release().build().perform();;
+        }
+    }
 }

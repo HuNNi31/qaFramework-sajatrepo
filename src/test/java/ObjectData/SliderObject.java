@@ -16,7 +16,8 @@ public class SliderObject extends CommonObject {
     }
 
     public void populateData(HashMap<String, String> testData) {
-        setSlider(testData.get("slider"));
+        setSlider(testData.get("right"));
         setSliders(getValueAsList(testData.get("sliders")));
+
     }
 }
